@@ -16,7 +16,7 @@
 #define B3(x)  ( (x)        & 0xff)
 
 #ifdef GCC_X86
-#define ROL(x,y)  asm("rol %%cl,%0" : "=r" (x) : "c" (y), "0" (x))
+#define ROL(x,y)  asm("rol %1,%0" : "=r" (x) : "c" (y), "0" (x))
 #else
 #define ROL(x,y)  ( (x) = ((x) << (y)) | (((x) & 0xffffffffuL) >> (32-(y))) )
 #endif
@@ -45,20 +45,26 @@ void cast5_init(struct cast5_state *cast5, char *key, int keylen)
 {
   int i;
   unsigned long a, b, c, d, e;
-  char padded[16];
+  /* use volatile so compiler won't optimize away the key clear */
+  volatile char padded[16];
 
   cast5->rounds = (keylen <= 10) ? 12 : 16;
 
-  if (keylen > 16) keylen = 16;
-  for (i = 0; i < keylen; i++) padded[i] = key[i];
-  for (; i < 16; i++) padded[i] = 0;
-
-  a = CHAR_TO_WORD(padded);
-  b = CHAR_TO_WORD(padded+4);
-  c = CHAR_TO_WORD(padded+8);
-  d = CHAR_TO_WORD(padded+12);
-
-  for (i = 0; i < 16; i++) padded[i] = 0;
+  if (keylen >= 16) {
+    a = CHAR_TO_WORD(key);
+    b = CHAR_TO_WORD(key+4);
+    c = CHAR_TO_WORD(key+8);
+    d = CHAR_TO_WORD(key+12);
+  }
+  else {
+    for (i = 0; i < keylen; i++) padded[i] = key[i];
+    for (; i < 16; i++) padded[i] = 0;
+    a = CHAR_TO_WORD(padded);
+    b = CHAR_TO_WORD(padded+4);
+    c = CHAR_TO_WORD(padded+8);
+    d = CHAR_TO_WORD(padded+12);
+    for (i = 0; i < 16; i++) padded[i] = 0;
+  }
 
   e = c;
   a ^= S5[B1(d)] ^ S6[B3(d)] ^ S7[B0(d)] ^ S8[B2(d)] ^ S7[B0(e)];

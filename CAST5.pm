@@ -6,7 +6,7 @@ use DynaLoader;
 
 use vars qw( $VERSION @ISA );
 
-$VERSION = "0.01";
+$VERSION = "0.02";
 @ISA = qw( DynaLoader );
 
 bootstrap Crypt::CAST5 $VERSION;

@@ -11,7 +11,7 @@
 typedef struct cast5_state {
   int rounds;
   unsigned long mask_key[16];
-  int rot_key[16];
+  unsigned char rot_key[16];
 } *Crypt__CAST5;
 
 extern unsigned long cast5_s1[256];
