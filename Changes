@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::CAST5.
 
+0.03  23 Mar 2003
+        - use perl's U32 type for portability
+
 0.02  10 Nov 2002
         - added volatile keword to keep compiler from optimizing away the
           clear of the key material

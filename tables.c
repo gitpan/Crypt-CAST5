@@ -2,13 +2,15 @@
 * tables.c
 * S-box tables for CAST5 cipher
 *
-* Copyright 2002 by Bob Mathews
+* Copyright 2002-2003 by Bob Mathews
 *
 * This library is free software; you can redistribute it and/or modify
 * it under the same terms as Perl itself.
 */
 
-const unsigned long cast5_s1[] = {
+#include "cast5.h"
+
+const U32 cast5_s1[] = {
 0x30fb40d4uL, 0x9fa0ff0buL, 0x6beccd2fuL, 0x3f258c7auL, 0x1e213f2fuL,
 0x9c004dd3uL, 0x6003e540uL, 0xcf9fc949uL, 0xbfd4af27uL, 0x88bbbdb5uL,
 0xe2034090uL, 0x98d09675uL, 0x6e63a0e0uL, 0x15c361d2uL, 0xc2e7661duL,
@@ -62,7 +64,7 @@ const unsigned long cast5_s1[] = {
 0xa2f7c579uL, 0x429ef47duL, 0x427b169cuL, 0x5ac9f049uL, 0xdd8f0f00uL,
 0x5c8165bfuL };
 
-const unsigned long cast5_s2[] = {
+const U32 cast5_s2[] = {
 0x1f201094uL, 0xef0ba75buL, 0x69e3cf7euL, 0x393f4380uL, 0xfe61cf7auL,
 0xeec5207auL, 0x55889c94uL, 0x72fc0651uL, 0xada7ef79uL, 0x4e1d7235uL,
 0xd55a63ceuL, 0xde0436bauL, 0x99c430efuL, 0x5f0c0794uL, 0x18dcdb7duL,
@@ -116,7 +118,7 @@ const unsigned long cast5_s2[] = {
 0x06dfdf1euL, 0x6c6cc4efuL, 0x7160a539uL, 0x73bfbe70uL, 0x83877605uL,
 0x4523ecf1uL };
 
-const unsigned long cast5_s3[] = {
+const U32 cast5_s3[] = {
 0x8defc240uL, 0x25fa5d9fuL, 0xeb903dbfuL, 0xe810c907uL, 0x47607fffuL,
 0x369fe44buL, 0x8c1fc644uL, 0xaececa90uL, 0xbeb1f9bfuL, 0xeefbcaeauL,
 0xe8cf1950uL, 0x51df07aeuL, 0x920e8806uL, 0xf0ad0548uL, 0xe13c8d83uL,
@@ -170,7 +172,7 @@ const unsigned long cast5_s3[] = {
 0xa4315c11uL, 0x83323ec5uL, 0xdfef4636uL, 0xa133c501uL, 0xe9d3531cuL,
 0xee353783uL };
 
-const unsigned long cast5_s4[] = {
+const U32 cast5_s4[] = {
 0x9db30420uL, 0x1fb6e9deuL, 0xa7be7befuL, 0xd273a298uL, 0x4a4f7bdbuL,
 0x64ad8c57uL, 0x85510443uL, 0xfa020ed1uL, 0x7e287affuL, 0xe60fb663uL,
 0x095f35a1uL, 0x79ebf120uL, 0xfd059d43uL, 0x6497b7b1uL, 0xf3641f63uL,
@@ -224,7 +226,7 @@ const unsigned long cast5_s4[] = {
 0x851e20feuL, 0x9833557euL, 0x13ecf0b0uL, 0xd3ffb372uL, 0x3f85c5c1uL,
 0x0aef7ed2uL };
 
-const unsigned long cast5_s5[] = {
+const U32 cast5_s5[] = {
 0x7ec90c04uL, 0x2c6e74b9uL, 0x9b0e66dfuL, 0xa6337911uL, 0xb86a7fffuL,
 0x1dd358f5uL, 0x44dd9d44uL, 0x1731167fuL, 0x08fbf1fauL, 0xe7f511ccuL,
 0xd2051b00uL, 0x735aba00uL, 0x2ab722d8uL, 0x386381cbuL, 0xacf6243auL,
@@ -278,7 +280,7 @@ const unsigned long cast5_s5[] = {
 0x750e6249uL, 0xda627e55uL, 0x5e76ffa8uL, 0xb1534546uL, 0x6d47de08uL,
 0xefe9e7d4uL };
 
-const unsigned long cast5_s6[] = {
+const U32 cast5_s6[] = {
 0xf6fa8f9duL, 0x2cac6ce1uL, 0x4ca34867uL, 0xe2337f7cuL, 0x95db08e7uL,
 0x016843b4uL, 0xeced5cbcuL, 0x325553acuL, 0xbf9f0960uL, 0xdfa1e2eduL,
 0x83f0579duL, 0x63ed86b9uL, 0x1ab6a6b8uL, 0xde5ebe39uL, 0xf38ff732uL,
@@ -332,7 +334,7 @@ const unsigned long cast5_s6[] = {
 0x38b5f331uL, 0x7128a454uL, 0x48392905uL, 0xa65b1db8uL, 0x851c97bduL,
 0xd675cf2fuL };
 
-const unsigned long cast5_s7[] = {
+const U32 cast5_s7[] = {
 0x85e04019uL, 0x332bf567uL, 0x662dbfffuL, 0xcfc65693uL, 0x2a8d7f6fuL,
 0xab9bc912uL, 0xde6008a1uL, 0x2028da1fuL, 0x0227bce7uL, 0x4d642916uL,
 0x18fac300uL, 0x50f18b82uL, 0x2cb2cb11uL, 0xb232e75cuL, 0x4b3695f2uL,
@@ -386,7 +388,7 @@ const unsigned long cast5_s7[] = {
 0x0fedce83uL, 0x878ddadauL, 0xf2a279c7uL, 0x94e01be8uL, 0x90716f4buL,
 0x954b8aa3uL };
 
-const unsigned long cast5_s8[] = {
+const U32 cast5_s8[] = {
 0xe216300duL, 0xbbddfffcuL, 0xa7ebdabduL, 0x35648095uL, 0x7789f8b7uL,
 0xe6c1121buL, 0x0e241600uL, 0x052ce8b5uL, 0x11a9cfb0uL, 0xe5952f11uL,
 0xece7990auL, 0x9386d174uL, 0x2a42931cuL, 0x76e38111uL, 0xb12def3auL,

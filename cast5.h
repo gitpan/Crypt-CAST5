@@ -2,26 +2,29 @@
 * cast5.h
 * Definitions for CAST5 cipher
 *
-* Copyright 2002 by Bob Mathews
+* Copyright 2002-2003 by Bob Mathews
 *
 * This library is free software; you can redistribute it and/or modify
 * it under the same terms as Perl itself.
 */
 
+#include <EXTERN.h>
+#include <perl.h>
+
 typedef struct cast5_state {
   int rounds;
-  unsigned long mask_key[16];
-  unsigned char rot_key[16];
+  U32 mask_key[16];
+  int rot_key[16];
 } *Crypt__CAST5;
 
-extern unsigned long cast5_s1[256];
-extern unsigned long cast5_s2[256];
-extern unsigned long cast5_s3[256];
-extern unsigned long cast5_s4[256];
-extern unsigned long cast5_s5[256];
-extern unsigned long cast5_s6[256];
-extern unsigned long cast5_s7[256];
-extern unsigned long cast5_s8[256];
+extern const U32 cast5_s1[256];
+extern const U32 cast5_s2[256];
+extern const U32 cast5_s3[256];
+extern const U32 cast5_s4[256];
+extern const U32 cast5_s5[256];
+extern const U32 cast5_s6[256];
+extern const U32 cast5_s7[256];
+extern const U32 cast5_s8[256];
 
 #define S1  cast5_s1
 #define S2  cast5_s2

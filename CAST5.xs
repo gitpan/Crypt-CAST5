@@ -2,7 +2,7 @@
 * CAST5.xs
 * Perl bindings for CAST5 cipher
 *
-* Copyright 2002 by Bob Mathews
+* Copyright 2002-2003 by Bob Mathews
 *
 * This library is free software; you can redistribute it and/or modify
 * it under the same terms as Perl itself.

@@ -2,7 +2,7 @@
 * _cast5.c
 * Implementation of the CAST5 cipher
 *
-* Copyright 2002 by Bob Mathews
+* Copyright 2002-2003 by Bob Mathews
 *
 * This library is free software; you can redistribute it and/or modify
 * it under the same terms as Perl itself.
@@ -16,7 +16,7 @@
 #define B3(x)  ( (x)        & 0xff)
 
 #ifdef GCC_X86
-#define ROL(x,y)  asm("rol %1,%0" : "=r" (x) : "c" (y), "0" (x))
+#define ROL(x,y)  asm("rol %1,%0" : "=r" (x) : "c" ((U8)y), "0" (x))
 #else
 #define ROL(x,y)  ( (x) = ((x) << (y)) | (((x) & 0xffffffffuL) >> (32-(y))) )
 #endif
@@ -33,10 +33,10 @@
     I = Km - R; ROL(I, Kr);  \
     L ^= ((S1[B0(I)] + S2[B1(I)]) ^ S3[B2(I)]) - S4[B3(I)];
 
-#define CHAR_TO_WORD(c)  ( (((unsigned long) (c)[0] & 0xff) << 24) |  \
-                           (((unsigned long) (c)[1] & 0xff) << 16) |  \
-                           (((unsigned long) (c)[2] & 0xff) <<  8) |  \
-                            ((unsigned long) (c)[3] & 0xff) )
+#define CHAR_TO_WORD(c)  ( (((U32) (c)[0] & 0xff) << 24) |  \
+                           (((U32) (c)[1] & 0xff) << 16) |  \
+                           (((U32) (c)[2] & 0xff) <<  8) |  \
+                            ((U32) (c)[3] & 0xff) )
 
 #define WORD_TO_CHAR(w,c)  ( (c)[0] = B0(w), (c)[1] = B1(w),  \
                              (c)[2] = B2(w), (c)[3] = B3(w) )
@@ -44,7 +44,7 @@
 void cast5_init(struct cast5_state *cast5, char *key, int keylen)
 {
   int i;
-  unsigned long a, b, c, d, e;
+  U32 a, b, c, d, e;
   /* use volatile so compiler won't optimize away the key clear */
   volatile char padded[16];
 
@@ -142,7 +142,7 @@ void cast5_init(struct cast5_state *cast5, char *key, int keylen)
 
 void cast5_encrypt(struct cast5_state *cast5, char *in, char *out)
 {
-  unsigned long tmp, left, right;
+  U32 tmp, left, right;
   left  = CHAR_TO_WORD(in);
   right = CHAR_TO_WORD(in+4);
 
@@ -171,7 +171,7 @@ void cast5_encrypt(struct cast5_state *cast5, char *in, char *out)
 
 void cast5_decrypt(struct cast5_state *cast5, char *in, char *out)
 {
-  unsigned long tmp, left, right;
+  U32 tmp, left, right;
   right = CHAR_TO_WORD(in);
   left  = CHAR_TO_WORD(in+4);
 
