@@ -1,0 +1,37 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.15.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It would check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 f18cd34a078907cded7c29612aa93e128d06273e CAST5.pm
+SHA1 7c5304fed47470bf456df6d25257222111bde5ee CAST5.xs
+SHA1 6ec9b032d8ad652bea9405098b60205e100ba737 Changes
+SHA1 dba573a4bef4e5a71c7ef15e83548f8fd092ad1b MANIFEST
+SHA1 2551f62796d5286643cde6d0676d594c67e1aa5d Makefile.PL
+SHA1 1a7488e412a3f20975ebec547419d9205804dcc3 README
+SHA1 bd6285d27edbf3bb742494840bfbf613863e7078 _cast5.c
+SHA1 b3deaf0777fd644d55dd3d0bd9f96e5e660873e1 cast5.h
+SHA1 f22824404a04ad1529483f7cdc00e0f98710b5e0 ppport.h
+SHA1 99a90164635a2fb39bddc7bb42ac1ecf444ae806 t/1cast5.t
+SHA1 de3c24dc9ce07bbf456f18a38937cbecf8c6866d t/2cbc.t
+SHA1 f9031504ea40925f82cff63d6b3a9be7ff330f59 tables.c
+SHA1 bb336df56c4b9400aa1d7d4a5c7c3cb48a432e72 test/slowtest.pl
+SHA1 f93a2f16bcae5fd776470fd83b6a28e86eb37409 test/speedtest.pl
+SHA1 270bd5712d75edde39484c8ed6d4bfc2479fa3b3 typemap
+-----BEGIN PGP SIGNATURE-----
+
+iD8DBQE9uX6UPgDecCrBEpcRAmxaAJ41+jjo+FXPB49P4PpZzghOomB29gCgr/uI
+X0ygpVXPC/8T/RRyTe+KljE=
+=+KBm
+-----END PGP SIGNATURE-----
