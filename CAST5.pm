@@ -6,7 +6,7 @@ use DynaLoader;
 
 use vars qw( $VERSION @ISA );
 
-$VERSION = "0.03";
+$VERSION = "0.04";
 @ISA = qw( DynaLoader );
 
 bootstrap Crypt::CAST5 $VERSION;
@@ -104,7 +104,7 @@ Bob Mathews, E<lt>bobmathews@alumni.calpoly.eduE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2002-2003 Bob Mathews
+Copyright (C) 2002-2004 Bob Mathews
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

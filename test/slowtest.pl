@@ -1,6 +1,10 @@
 # The full maintenance test from rfc2144
 # This test takes a few minutes to run
 
+# To run, cd to the Crypt-CAST5-x.xx directory and type
+#     make
+#     perl test/slowtest.pl
+
 use Test::More tests => 4;
 use lib "blib/lib";
 use lib "blib/arch";

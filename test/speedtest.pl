@@ -1,5 +1,9 @@
 # Simple test to check the speed of Crypt::CAST5_PP
 
+# To run, cd to the Crypt-CAST5-x.xx directory and type
+#     make
+#     perl test/speedtest.pl
+
 use strict;
 use warnings;
 

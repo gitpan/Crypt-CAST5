@@ -2,7 +2,7 @@
 * CAST5.xs
 * Perl bindings for CAST5 cipher
 *
-* Copyright 2002-2003 by Bob Mathews
+* Copyright 2002-2004 by Bob Mathews
 *
 * This library is free software; you can redistribute it and/or modify
 * it under the same terms as Perl itself.
@@ -16,12 +16,16 @@
 
 #include "cast5.h"
 
+#ifndef SvPVbyte
+#define SvPVbyte SvPV
+#endif
+
 static void cast5_init_sv(Crypt__CAST5 cast5, SV *key)
 {
   STRLEN keylen;
   char *keystr;
 
-  keystr = SvPV(key, keylen);
+  keystr = SvPVbyte(key, keylen);
   if (keylen < 5 || keylen > 16) croak("Key must be 40 to 128 bits");
 
   cast5_init(cast5, keystr, keylen);
@@ -72,7 +76,7 @@ encrypt(cast5, plaintext)
     STRLEN len;
   CODE:
     if (cast5->rounds == 0) croak("Call init() first");
-    str = SvPV(plaintext, len);
+    str = SvPVbyte(plaintext, len);
     if (len != 8) croak("Block size must be 8");
     RETVAL = NEWSV(0, 8);
     SvPOK_only(RETVAL);
@@ -90,7 +94,7 @@ decrypt(cast5, ciphertext)
     STRLEN len;
   CODE:
     if (cast5->rounds == 0) croak("Call init() first");
-    str = SvPV(ciphertext, len);
+    str = SvPVbyte(ciphertext, len);
     if (len != 8) croak("Block size must be 8");
     RETVAL = NEWSV(0, 8);
     SvPOK_only(RETVAL);

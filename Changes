@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::CAST5.
 
+0.04  19 Feb 2004
+        - react appropriately to utf8 input
+
 0.03  23 Mar 2003
         - use perl's U32 type for portability
 

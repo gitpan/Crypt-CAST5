@@ -2,6 +2,7 @@ CAST5.pm
 CAST5.xs
 Changes
 MANIFEST
+META.yml
 Makefile.PL
 README
 SIGNATURE
@@ -10,6 +11,7 @@ cast5.h
 ppport.h
 t/1cast5.t
 t/2cbc.t
+t/3utf.t
 tables.c
 test/slowtest.pl
 test/speedtest.pl

@@ -2,7 +2,7 @@
 * _cast5.c
 * Implementation of the CAST5 cipher
 *
-* Copyright 2002-2003 by Bob Mathews
+* Copyright 2002-2004 by Bob Mathews
 *
 * This library is free software; you can redistribute it and/or modify
 * it under the same terms as Perl itself.
