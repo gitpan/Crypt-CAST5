@@ -1,5 +1,8 @@
 Revision history for Perl extension Crypt::CAST5.
 
+0.05  1 Jul 2006
+        - removed broken CBC test
+
 0.04  19 Feb 2004
         - react appropriately to utf8 input
 
